@@ -1,14 +1,15 @@
 import ProductList from "../components/ProductList";
 import Hero from "../components/Hero";
+
 const Home = () => {
   return (
     <div>
       <Hero />
 
       {/* Why Choose Us Section */}
-      <section className="container mx-auto p-6 text-center">
-        <h2 className="text-4xl font-bold text-blue-600">Why Choose Aqua Life?</h2>
-        <div className="grid md:grid-cols-3 gap-6 mt-6">
+      <section className="container mx-auto px-6 py-12 text-center">
+        <h2 className="text-4xl font-bold text-blue-600 mb-8">Why Choose Aqua Life?</h2> {/* Added bottom margin */}
+        <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-gray-100 p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-semibold">High-Quality Filtration</h3>
             <p className="mt-2 text-gray-700">Advanced purification technology to ensure clean water.</p>
@@ -24,8 +25,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Products */}
-      <ProductList limit={4} />
+      {/* Featured Products Section */}
+      <section className="container mx-auto px-6 py-12">
+        <ProductList limit={4} />
+      </section>
     </div>
   );
 };

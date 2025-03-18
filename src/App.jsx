@@ -7,7 +7,7 @@ import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 
-const App = () => {
+const App = () => { 
   return (
     <Router>
       <Navbar />
