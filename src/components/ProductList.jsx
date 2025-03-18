@@ -7,9 +7,9 @@ import aquaPearl from "../assets/images/portfolio-3.jpg";
 import crystalRo from "../assets/images/Crystal-ro.jpg"; 
 
 const products = [
-  { id: 1, name: "Aqua Touch", description: "Advanced filtration system for clean drinking water.", price: "$150", image: aquaTouch },
-  { id: 2, name: "Aqua Grand Plus", description: "Removes bacteria and viruses for safe consumption.", price: "$200", image: aquaGrand },
-  { id: 3, name: "Blue Dimond", description: "Reduces hardness for better quality water.", price: "$180", image: blueDimond },
+  { id: 1, name: "Aqua Touch", description: "Advanced filtration system for clean drinking water.", price: "$150",quality: "zero" ,image: aquaTouch },
+  { id: 2, name: "Aqua Grand Plus", description: "Removes bacteria and viruses for safe consumption.", price: "$200",quality: "zero", image: aquaGrand },
+  { id: 3, name: "Blue Dimond", description: "Reduces hardness for better quality water.", price: "$180",quality: "zero", image: blueDimond },
   { id: 4, name: "Aqua Pearl", description: "Enhances pH level for healthier drinking water.", price: "$220", image: aquaPearl },
   { id: 5, name: "Crystal RO", description: "Purifies water for the entire home.", price: "$300", image: crystalRo },
 ];
