@@ -8,9 +8,6 @@ const Hero = () => {
       className="relative h-[80vh] flex items-center justify-center text-center text-white bg-cover bg-center px-6"
       style={{ backgroundImage: `url(${bgimg})` }}
     >
-      {/* Dark Overlay
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div> */}
-
       {/* Hero Content */}
       <div className="relative max-w-2xl">
         <h1 className="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg">
@@ -30,7 +27,7 @@ const Hero = () => {
           </Link>
           <Link
             to="/contact"
-            className="px-6 py-3 border-2 border-white text-black hover:bg-white hover:text-black-600 font-semibold rounded-lg transition duration-300"
+            className="px-6 py-3 border-2 border-white text-white hover:bg-white hover:text-black font-semibold rounded-lg transition duration-300"
           >
             Contact Us
           </Link>
