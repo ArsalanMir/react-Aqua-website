@@ -8,11 +8,71 @@ import aquaPearl from "../assets/images/portfolio-3.jpg";
 import crystalRo from "../assets/images/Crystal-ro.jpg"; 
 
 const products = [
-  { id: 1, name: "Aqua Touch", description: "Advanced filtration system for clean drinking water.", price: "$150", image: aquaTouch },
-  { id: 2, name: "Aqua Grand Plus", description: "Removes bacteria and viruses for safe consumption.", price: "$200", image: aquaGrand },
-  { id: 3, name: "Blue Dimond", description: "Reduces hardness for better quality water.", price: "$180", image: blueDimond },
-  { id: 4, name: "Aqua Pearl", description: "Enhances pH level for healthier drinking water.", price: "$220", image: aquaPearl },
-  { id: 5, name: "Crystal RO", description: "Purifies water for the entire home.", price: "$300", image: crystalRo },
+  { 
+    id: 1, 
+    name: "Aqua Touch", 
+    description: "Advanced filtration system for clean drinking water.", 
+    price: "$150", 
+    purificationCapacity: "15 L/hr",
+    storageCapacity: "10 Liters",
+    dimensions: "380 x 270 x 505 mm",
+    netWeight: "8.5 kg",
+    warranty: "1 Year",
+    support: "24/7 Customer Support",
+    image: aquaTouch 
+  },
+  { 
+    id: 2, 
+    name: "Aqua Grand Plus", 
+    description: "Removes bacteria and viruses for safe consumption.", 
+    price: "$200",
+    purificationCapacity: "20 L/hr",
+    storageCapacity: "12 Liters",
+    dimensions: "400 x 280 x 540 mm",
+    netWeight: "9.0 kg",
+    warranty: "1 Year",
+    support: "24/7 Customer Support",
+    image: aquaGrand 
+  },
+  { 
+    id: 3, 
+    name: "Blue Dimond", 
+    description: "Reduces hardness for better quality water.", 
+    price: "$180",
+    purificationCapacity: "18 L/hr",
+    storageCapacity: "8 Liters",
+    dimensions: "370 x 260 x 500 mm",
+    netWeight: "7.5 kg",
+    warranty: "1 Year",
+    support: "24/7 Customer Support",
+    image: blueDimond 
+  },
+  { 
+    id: 4, 
+    name: "Aqua Pearl", 
+    description: "Enhances pH level for healthier drinking water.", 
+    price: "$220",
+    purificationCapacity: "16 L/hr",
+    storageCapacity: "10 Liters",
+    dimensions: "385 x 275 x 520 mm",
+    netWeight: "8.2 kg",
+    warranty: "1 Year",
+    support: "24/7 Customer Support",
+    image: aquaPearl 
+  },
+  { 
+    id: 5, 
+    name: "Crystal RO", 
+    description: "Purifies water for the entire home.", 
+    price: "$300",
+    purificationCapacity: "25 L/hr",
+    storageCapacity: "15 Liters",
+    dimensions: "420 x 300 x 550 mm",
+    netWeight: "10.0 kg",
+    warranty: "2 Years",
+    support: "24/7 Customer Support",
+    image: crystalRo 
+  },
 ];
 
 const ProductList = ({ limit }) => {
@@ -31,56 +91,70 @@ const ProductList = ({ limit }) => {
 
   return (
     <div className="container mx-auto px-6 py-12">
-      <h2 className="text-3xl font-bold text-center text-blue-600">Our Products</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
+      <h2 className="text-3xl font-bold text-center text-blue-600 mb-8 border-b-2 pb-2">
+        Our Products
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {displayedProducts.map((product) => (
-          <div 
-            key={product.id} 
-            className="bg-gray-100 p-4 rounded-lg shadow-md text-center transition-transform duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            {/* Image with hover effect & fixed aspect ratio */}
-            <div className="w-full h-48 overflow-hidden rounded-md flex items-center justify-center">
-              <img 
-                src={product.image} 
-                alt={product.name} 
-                className="w-full h-full object-cover rounded-md transition-transform duration-300 hover:scale-110"
-              />
+          <div key={product.id} className="bg-white p-4 rounded-lg shadow-md text-center border border-gray-200">
+            <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-md mb-4" />
+            
+            <h3 className="text-lg font-semibold text-blue-700">{product.name}</h3>
+            <p className="text-gray-600 text-sm italic">{product.description}</p>
+
+            {/* Product Details Section */}
+            <div className="mt-4 text-sm text-gray-700">
+              <div className="border-b border-gray-300 pb-2 mb-2">
+                <strong>Price:</strong> <span className="text-green-600 font-semibold">{product.price}</span>
+              </div>
+              <div className="border-b border-gray-300 pb-2 mb-2">
+                <strong>Purification Capacity:</strong> {product.purificationCapacity}
+              </div>
+              <div className="border-b border-gray-300 pb-2 mb-2">
+                <strong>Storage Capacity:</strong> {product.storageCapacity}
+              </div>
+              <div className="border-b border-gray-300 pb-2 mb-2">
+                <strong>Dimensions:</strong> {product.dimensions}
+              </div>
+              <div className="border-b border-gray-300 pb-2 mb-2">
+                <strong>Net Weight:</strong> {product.netWeight}
+              </div>
+              <div className="border-b border-gray-300 pb-2 mb-2">
+                <strong>Warranty:</strong> {product.warranty}
+              </div>
+              <div>
+                <strong>Support:</strong> {product.support}
+              </div>
             </div>
 
-            {/* Product Name */}
-            <h3 className="text-lg font-semibold mt-4">{product.name}</h3>
+            {/* Buttons Section */}
+            <div className="mt-4">
+              {addedToCart[product.id] ? (
+                <Link to="/cart">
+                  <button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 rounded-lg transition">
+                    Go to Cart
+                  </button>
+                </Link>
+              ) : (
+                <button
+                  onClick={() => handleAddToCart(product)}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition"
+                >
+                  Add to Cart
+                </button>
+              )}
 
-            {/* Show description and price only on the Products page */}
-            {isProductsPage && (
-              <>
-                <p className="text-gray-600 mt-2">{product.description}</p>
-                <p className="text-blue-600 font-semibold mt-2">{product.price}</p>
-              </>
-            )}
-
-            {/* Contact Us Button */}
-            <Link to="/contact">
-              <button className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition">
-                Contact Us
-              </button>
-            </Link>
+              {/* <Link to="/contact">
+                <button className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition">
+                  Contact Us
+                </button>
+              </Link> */}
+            </div>
           </div>
         ))}
       </div>
-
-      {/* View More Button on Home Page */}
-      {!isProductsPage && limit && (
-        <div className="text-center mt-8">
-          <Link to="/products">
-            <button className="px-6 py-3 bg-gray-800 hover:bg-gray-900 text-white font-semibold rounded-lg transition shadow-md">
-              View More Products
-            </button>
-          </Link>
-        </div>
-      )}
     </div>
   );
 };
 
 export default ProductList;
-
