@@ -8,7 +8,7 @@ const Home = () => {
 
       {/* Why Choose Us Section */}
       <section className="container mx-auto px-6 py-12 text-center">
-        <h2 className="text-4xl font-bold text-blue-600 mb-8">Why Choose Aqua Life?</h2> {/* Added bottom margin */}
+        <h2 className="text-4xl font-bold text-blue-600 mb-8">Why Choose Aqua Life?</h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-gray-100 p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-semibold">High-Quality Filtration</h3>
@@ -25,9 +25,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Products Section */}
+      {/* Featured Products Section (Only Show Name + Button) */}
       <section className="container mx-auto px-6 py-12">
-        <ProductList limit={4} />
+        <ProductList limit={4} compact={true} />
       </section>
     </div>
   );

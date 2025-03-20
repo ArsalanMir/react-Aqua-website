@@ -7,6 +7,8 @@ import blueDimond from "../assets/images/blue-dimond.jpg";
 import aquaPearl from "../assets/images/portfolio-3.jpg";
 import crystalRo from "../assets/images/Crystal-ro.jpg"; 
 
+
+
 const products = [
   { 
     id: 1, 
@@ -75,7 +77,7 @@ const products = [
   },
 ];
 
-const ProductList = ({ limit }) => {
+const ProductList = ({ limit, compact }) => {
   const { addToCart } = useCart();
   const [addedToCart, setAddedToCart] = useState({});
 
@@ -92,7 +94,7 @@ const ProductList = ({ limit }) => {
   return (
     <div className="container mx-auto px-6 py-12">
       <h2 className="text-3xl font-bold text-center text-blue-600 mb-8 border-b-2 pb-2">
-        Our Products
+        {compact ? "Featured Products" : "Our Products"}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {displayedProducts.map((product) => (
@@ -100,36 +102,43 @@ const ProductList = ({ limit }) => {
             <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-md mb-4" />
             
             <h3 className="text-lg font-semibold text-blue-700">{product.name}</h3>
-            <p className="text-gray-600 text-sm italic">{product.description}</p>
 
-            {/* Product Details Section */}
-            <div className="mt-4 text-sm text-gray-700">
-              <div className="border-b border-gray-300 pb-2 mb-2">
-                <strong>Price:</strong> <span className="text-green-600 font-semibold">{product.price}</span>
+            {/* Show details only if NOT in compact mode */}
+            {!compact && (
+              <div className="mt-4 text-sm text-gray-700">
+                <div className="border-b border-gray-300 pb-2 mb-2">
+                  <strong>Price:</strong> <span className="text-green-600 font-semibold">{product.price}</span>
+                </div>
+                <div className="border-b border-gray-300 pb-2 mb-2">
+                  <strong>Purification Capacity:</strong> {product.purificationCapacity}
+                </div>
+                <div className="border-b border-gray-300 pb-2 mb-2">
+                  <strong>Storage Capacity:</strong> {product.storageCapacity}
+                </div>
+                <div className="border-b border-gray-300 pb-2 mb-2">
+                  <strong>Dimensions:</strong> {product.dimensions}
+                </div>
+                <div className="border-b border-gray-300 pb-2 mb-2">
+                  <strong>Net Weight:</strong> {product.netWeight}
+                </div>
+                <div className="border-b border-gray-300 pb-2 mb-2">
+                  <strong>Warranty:</strong> {product.warranty}
+                </div>
+                <div>
+                  <strong>Support:</strong> {product.support}
+                </div>
               </div>
-              <div className="border-b border-gray-300 pb-2 mb-2">
-                <strong>Purification Capacity:</strong> {product.purificationCapacity}
-              </div>
-              <div className="border-b border-gray-300 pb-2 mb-2">
-                <strong>Storage Capacity:</strong> {product.storageCapacity}
-              </div>
-              <div className="border-b border-gray-300 pb-2 mb-2">
-                <strong>Dimensions:</strong> {product.dimensions}
-              </div>
-              <div className="border-b border-gray-300 pb-2 mb-2">
-                <strong>Net Weight:</strong> {product.netWeight}
-              </div>
-              <div className="border-b border-gray-300 pb-2 mb-2">
-                <strong>Warranty:</strong> {product.warranty}
-              </div>
-              <div>
-                <strong>Support:</strong> {product.support}
-              </div>
-            </div>
+            )}
 
             {/* Buttons Section */}
             <div className="mt-4">
-              {addedToCart[product.id] ? (
+              {compact ? (
+                <Link to="/products">
+                  <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition">
+                    Explore More Products
+                  </button>
+                </Link>
+              ) : addedToCart[product.id] ? (
                 <Link to="/cart">
                   <button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 rounded-lg transition">
                     Go to Cart
@@ -143,12 +152,6 @@ const ProductList = ({ limit }) => {
                   Add to Cart
                 </button>
               )}
-
-              {/* <Link to="/contact">
-                <button className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition">
-                  Contact Us
-                </button>
-              </Link> */}
             </div>
           </div>
         ))}
