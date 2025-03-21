@@ -5,7 +5,7 @@ import { useCart } from "../context/CartContext";
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
 
-  // Calculate Total Price (Fix NaN issue)
+
   const totalAmount = cart.reduce((total, product) => {
     const price = parseFloat(product.price.replace("$", "")); 
     return total + price * product.quantity;
@@ -36,6 +36,7 @@ const Cart = () => {
                 <p className="text-gray-600 mt-1">💰 Price: {product.price}</p>
 
                 {/* Quantity Controls */}
+
                 <div className="flex items-center justify-center mt-4">
                   <button
                     onClick={() => updateQuantity(product.id, product.quantity - 1)}
@@ -55,6 +56,7 @@ const Cart = () => {
                 </div>
 
                 {/* Remove from Cart Button */}
+
                 <button
                   onClick={() => removeFromCart(product.id)}
                   className="mt-4 w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded-lg transition"
@@ -66,9 +68,10 @@ const Cart = () => {
           </div>
 
           {/* Display Total Amount */}
+          
           <div className="text-center mt-10 bg-gray-100 py-6 px-4 rounded-lg shadow-md border border-gray-300">
             <h3 className="text-2xl font-bold text-gray-800">
-              🏷️ Total: <span className="text-blue-600">${totalAmount.toFixed(2)}</span>
+              🏷️ Total: <span className="text-blue-600"> ${totalAmount.toFixed(2)}</span>
             </h3>
             <Link to="/checkout">
               <button className="mt-4 px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition shadow-md text-lg">

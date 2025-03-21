@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./context/CartContext";
+import Checkout from "./pages/Checkout";
 
 const App = () => { 
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </Router>
